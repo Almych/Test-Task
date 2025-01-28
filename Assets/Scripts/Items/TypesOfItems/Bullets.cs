@@ -1,6 +1,6 @@
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Bullets", menuName = "ItemObjects/Bullets")]
-public class Bullets : MassItemObject
+public class Bullets : ItemType
 {
     public float bulletDamage;
 

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 561441902470860393, guid: 8ff42b1f9e60f2b429f48c62f328fca1, type: 3}
   itemWeight: 1
+  currentAmount: 1
+  maxStackAmount: 1
   defendPoints: 3
   type: 1

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemSprite: {fileID: 8429838930962672440, guid: 6fdff4a628474fc48ac2d05f7e337ff6, type: 3}
   itemWeight: 0.03
   currentAmount: 10
-  maxAmount: 60
+  maxStackAmount: 60
   bulletDamage: 5

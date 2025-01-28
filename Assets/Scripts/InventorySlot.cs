@@ -1,43 +1,37 @@
-
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    [HideInInspector] public ItemSlot itemSlot;
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject item = eventData.pointerDrag;
+        GameObject item = eventData.pointerDrag; 
         ItemSlot newItem = item.GetComponent<ItemSlot>();
-        AddItem(newItem);
+        AddItem(newItem); 
     }
 
     public void AddItem(ItemSlot newItem)
     {
         if (transform.childCount > 0)
         {
-            if (transform.GetChild(0) == null)
+            ItemSlot currentItem = transform.GetChild(0).GetComponent<ItemSlot>();
+            if (currentItem.itemObjectData.item == newItem.itemObjectData.item && currentItem.itemObjectData.amount < currentItem.itemObjectData.item.maxStackAmount)
             {
-                itemSlot = newItem;
-                itemSlot.SetParentToItem(transform);
+                int availableSpace = currentItem.itemObjectData.item.maxStackAmount - currentItem.itemObjectData.amount;
+                int amountToAdd = Mathf.Min(newItem.itemObjectData.amount, availableSpace);
+
+                InventoryManager.Instance.IncreaseAmount(currentItem.itemObjectData, amountToAdd);
+
+                InventoryManager.Instance.DecreaseAmount(newItem, amountToAdd);
             }
-            else
-            {
-                itemSlot = transform.GetChild(0).GetComponent<ItemSlot>();
-                if (itemSlot.itemObjectData.GetInstanceID() == newItem.itemObjectData.GetInstanceID())
-                {
-                    if (itemSlot.itemObjectData is MassItemObject massItemObject)
-                    {
-                        if (massItemObject.currentAmount < massItemObject.maxStackAmount)
-                            massItemObject.currentAmount++;
-                        newItem.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }else
+            
+        }
+        else
         {
-            itemSlot = newItem;
-            itemSlot.SetParentToItem(transform);
+            newItem.SetParentAfterdrag(transform);
+            newItem.transform.SetParent(transform);
         }
     }
+
+   
 }
