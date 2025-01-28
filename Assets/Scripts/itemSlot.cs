@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    public ItemObject itemObjectData;
+    public ItemObject itemObjectData { get; private set; }
     private Transform onDragParent;
     private Image image => GetComponent<Image>();
 
@@ -37,13 +37,15 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         image.raycastTarget = true; 
     }
 
-    public void SetParentAfterdrag(Transform parent)
+    
+
+    public void SetParentAfterDrag(Transform parent)
     {
         onDragParent = parent;
     }
 
-    public void AddItem(int amount)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        itemObjectData.amount += amount;
+        InventoryManager.Instance.ShowWindow(this);
     }
 }

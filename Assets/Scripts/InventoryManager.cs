@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public Inventory inventory;
     public ItemSlotCreator inventorySlotCreator;
     public List<InventorySlot> inventorySlots;
+    public PopupWindow popupWindow;
     void Awake()
     {
         if (Instance == null)
@@ -23,20 +25,32 @@ public class InventoryManager : MonoBehaviour
             inventorySlots[j].AddItem(slot);
         }
     }
-
+    
     public void DecreaseAmount(ItemSlot item, int decreaseAmount)
     {
-        item.itemObjectData.amount -= decreaseAmount;
 
-        if (item.itemObjectData.amount <= 0)
+        if (item.itemObjectData.RemoveItem(decreaseAmount))
         {
-            
+            RemoveFromInventory(item);
         }
     }
 
-    public void IncreaseAmount(ItemObject itemObject, int increaseAmount)
+    public void IncreaseAmount(ItemSlot itemSlot, int increaseAmount)
     {
-        if (itemObject.amount + increaseAmount <= itemObject.item.maxStackAmount)
-            itemObject.amount += increaseAmount;
+        if (itemSlot.itemObjectData.amount + increaseAmount <= itemSlot.itemObjectData.item.maxStackAmount)
+        {
+            itemSlot.itemObjectData.AddItem(increaseAmount);
+        }
+    }
+
+    public void RemoveFromInventory(ItemSlot itemSlot)
+    {
+        inventory.RemoveItem(itemSlot.itemObjectData);
+        Destroy(itemSlot.gameObject);
+    }
+    public void ShowWindow(ItemSlot slot)
+    {
+        popupWindow.gameObject.SetActive(true);
+        popupWindow.ShowWindow(slot);
     }
 }

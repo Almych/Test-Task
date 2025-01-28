@@ -15,20 +15,21 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (transform.childCount > 0)
         {
             ItemSlot currentItem = transform.GetChild(0).GetComponent<ItemSlot>();
-            if (currentItem.itemObjectData.item == newItem.itemObjectData.item && currentItem.itemObjectData.amount < currentItem.itemObjectData.item.maxStackAmount)
+            if (currentItem.itemObjectData.item.GetInstanceID() == newItem.itemObjectData.item.GetInstanceID() && currentItem.itemObjectData.amount < currentItem.itemObjectData.item.maxStackAmount)
             {
                 int availableSpace = currentItem.itemObjectData.item.maxStackAmount - currentItem.itemObjectData.amount;
                 int amountToAdd = Mathf.Min(newItem.itemObjectData.amount, availableSpace);
 
-                InventoryManager.Instance.IncreaseAmount(currentItem.itemObjectData, amountToAdd);
+                InventoryManager.Instance.IncreaseAmount(currentItem, amountToAdd);
 
                 InventoryManager.Instance.DecreaseAmount(newItem, amountToAdd);
+                
             }
             
         }
         else
         {
-            newItem.SetParentAfterdrag(transform);
+            newItem.SetParentAfterDrag(transform);
             newItem.transform.SetParent(transform);
         }
     }
