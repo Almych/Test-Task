@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveFromInventory(ItemSlot itemSlot)
     {
-        inventory.RemoveItem(itemSlot.itemObjectData);
+        if(inventory.RemoveItem(itemSlot.itemObjectData))
         Destroy(itemSlot.gameObject);
     }
     public void ShowWindow(ItemSlot slot)

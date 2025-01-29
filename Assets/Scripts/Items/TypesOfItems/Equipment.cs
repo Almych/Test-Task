@@ -7,7 +7,7 @@ public enum EquipmentType
 };
 
 [CreateAssetMenu(fileName ="New Equipment", menuName = "ItemObjects/Equipment")]
-public class Equip : ItemType
+public class Equipment : ItemType
 {
     public int defendPoints;
     public EquipmentType type;

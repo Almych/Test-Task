@@ -9,12 +9,17 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<ItemObject> items = new List<ItemObject>();
-    public void RemoveItem(ItemObject item)
+    public bool RemoveItem(ItemObject item)
     {
-       if (items.Contains(item))
+        for (int i = 0; i < items.Count; i++)
         {
-            items.Remove(item);
+            if (items[i] == item)
+            {
+                items.RemoveAt(i);
+                return true;
+            }
         }
+        return false;
     }
 
 }

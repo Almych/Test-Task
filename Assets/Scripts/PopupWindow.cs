@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PopupWindow : MonoBehaviour
@@ -7,32 +8,40 @@ public class PopupWindow : MonoBehaviour
     public Image imageOfItem;
     public TMP_Text weightCount;
     public TMP_Text nameOfItem;
-    public TMP_Text uniqThingCount;
-    public Image uniqImageData;
+    public TMP_Text uniqIconText;
+    public Image uniqIcon;
     public ItemsIcons icons;
-    public Button useItem, deleteItem;
-    public  void ShowWindow(ItemSlot item)
+    public Button useButton, deleteButton;
+
+
+    public void ShowWindow(ItemSlot itemSlot)
     {
-        imageOfItem.sprite = item.itemObjectData.item.itemSprite;
-        weightCount.text = item.itemObjectData.item.itemWeight.ToString() + " кг";
-        nameOfItem.text = item.itemObjectData.item.name;
-        useItem.onClick.AddListener(item.itemObjectData.item.OnUse);
-        deleteItem.onClick.AddListener(() => InventoryManager.Instance.RemoveFromInventory(item));
-        deleteItem.transform.GetChild(0).GetComponent<TMP_Text>().text = "Удалить";
-        if (item.itemObjectData.item is Bullets)
+        imageOfItem.sprite = itemSlot.itemObjectData.item.itemSprite;
+        weightCount.text = itemSlot.itemObjectData.item.itemWeight.ToString() + " кг";
+        nameOfItem.text = itemSlot.itemObjectData.item.name;
+        useButton.onClick.AddListener(itemSlot.itemObjectData.item.OnUse);
+        deleteButton.onClick.AddListener(() => InventoryManager.Instance.RemoveFromInventory(itemSlot));
+        TMP_Text useButtonText = useButton.transform.GetChild(0).GetComponent<TMP_Text>();
+        if (useButtonText != null)
         {
-            useItem.transform.GetChild(0).GetComponent<TMP_Text>().text = "Купить";
-            uniqImageData.sprite = icons.bulletIcon;
-        }
-        else if (item.itemObjectData.item is Aim)
-        {
-            useItem.transform.GetChild(0).GetComponent<TMP_Text>().text = "Лечить";
-            uniqImageData.sprite = icons.healIcon;
-        }
-        else
-        {
-            useItem.transform.GetChild(0).GetComponent<TMP_Text>().text = "Надеть";
-            uniqImageData.sprite = icons.defenseIcon;
+            ItemType itemType = itemSlot.itemObjectData.item;
+            if (itemType is Bullets)
+            {
+                useButtonText.text = "Купить";
+                uniqIcon.sprite = icons.bulletIcon;
+            }
+            else if (itemType is Aim)
+            {
+                useButtonText.text = "Лечить";
+                uniqIcon.sprite = icons.healIcon;
+            }
+            else if (itemType is Equipment)
+            {
+                useButtonText.text = "Экипировать";
+                uniqIcon.sprite = icons.defenseIcon;
+            }
         }
     }
+
+    
 }
