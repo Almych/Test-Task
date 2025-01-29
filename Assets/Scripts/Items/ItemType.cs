@@ -4,7 +4,7 @@ public abstract class ItemType : ScriptableObject
 {
     public Sprite itemSprite;
     public float itemWeight;
-    public int maxStackAmount;
+    [Range(1,1000)]public int maxStackAmount;
     public abstract void OnUse();
 }
 

@@ -1,22 +1,15 @@
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBarUi : MonoBehaviour
 {
-    public HealthData healthData;
-    public event Action OnDeath;
+    public Image fillHealth;
+    public TMP_Text healthText;
 
-    void Start()
+    public void ChangeValue(float health, float maxHealth)
     {
-        
-    }
-
-    public void InitHealth()
-    {
-        if (healthData.currentHealth <= 0)
-        {
-            healthData.currentHealth = healthData.maxHealth;
-        }
+        fillHealth.fillAmount = health / maxHealth;
+        healthText.text = health.ToString();
     }
 }

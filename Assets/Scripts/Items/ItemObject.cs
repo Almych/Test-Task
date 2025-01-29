@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemObject
 {
     public ItemType item;
-    public int amount;
+    [Range(1,1000)]public int amount;
 
     public void AddItem(int addAmount)
     {
