@@ -59,6 +59,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(onDragParent == null || onDragParent.GetComponent<EquipSlot>() == null) 
         InventoryManager.Instance.ShowWindow(this);
     }
 
@@ -68,5 +69,10 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             amount.text = itemObjectData.amount.ToString();
         else
             amount.text = "";
+    }
+
+    public Transform GetOnDragParent()
+    {
+        return onDragParent;
     }
 }

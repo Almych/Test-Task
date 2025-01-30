@@ -22,8 +22,10 @@ public class EquipSlot : MonoBehaviour, IDropHandler
         {
             if(currentItem != null)
             {
-                currentItem.SetParentAfterDrag(equipmentSlot.transform.parent);
-                currentItem.transform.SetParent(equipmentSlot.transform.parent);
+                currentItem.transform.position = equipmentSlot.GetOnDragParent().position;
+                currentItem.transform.SetParent(equipmentSlot.GetOnDragParent());
+                currentItem.SetParentAfterDrag(equipmentSlot.GetOnDragParent());
+                Debug.Log(currentItem.transform.parent.name);
             }
             equipmentSlot.SetParentAfterDrag(transform);
             equipmentSlot.transform.SetParent(transform);
