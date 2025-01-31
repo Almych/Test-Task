@@ -1,26 +1,19 @@
 using System;
 using UnityEngine;
-[Serializable]
-public class ItemObject
+[CreateAssetMenu(menuName = "ItemObject/Countable", fileName = "new CountableObject")]
+public class CountableObject : ItemObject
 {
-    public ItemType item;
     [Range(1,1000)]public int amount;
+    public new ItemType itemType = new UnCountable();
+}
 
-    public void AddItem(int addAmount)
-    {
-        amount += addAmount;
-    }
+[CreateAssetMenu(menuName = "ItemObject/UnCountable", fileName = "new UnCountableObject")]
+public class UnCountableObject : ItemObject
+{
+    public new ItemType itemType = new UnCountable();
+}
 
-    public bool RemoveItem(int removeAmount)
-    {
-        amount -= removeAmount;
-        if (amount <=0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+public abstract class ItemObject : ScriptableObject
+{
+    public ItemType itemType;
 }

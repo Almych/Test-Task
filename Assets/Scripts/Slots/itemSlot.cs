@@ -15,8 +15,8 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     public void Init(ItemObject item)
     {
         itemObjectData = item;
-        image.sprite = itemObjectData.item.itemSprite;
-        UpdateSlot();
+        image.sprite = itemObjectData.itemType.itemSprite;
+        //UpdateSlot();
     }
 
    
@@ -46,30 +46,31 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void SetParentAfterDrag(Transform parent)
     {
-        if (onDragParent != null)
-        {
-            EquipSlot equipSlot = onDragParent.GetComponent<EquipSlot>();
-            if (equipSlot != null)
-            {
-                equipSlot.UpdateDefenseText();
-            }
-            onDragParent = parent;
-        }
+       onDragParent = parent;
     }
+
+    //if (onDragParent != null)
+    //    {
+    //        EquipSlot equipSlot = onDragParent.GetComponent<EquipSlot>();
+    //        if (equipSlot != null)
+    //        {
+    //            equipSlot.UpdateDefenseText();
+    //        }
+    //    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(onDragParent == null || onDragParent.GetComponent<EquipSlot>() == null) 
-        InventoryManager.Instance.ShowWindow(this);
+        if (onDragParent == null)
+            InventoryManager.Instance.ShowWindow(this);
     }
 
-    public void UpdateSlot()
-    {
-        if (itemObjectData.amount > 1)
-            amount.text = itemObjectData.amount.ToString();
-        else
-            amount.text = "";
-    }
+    //public void UpdateSlot()
+    //{
+    //    if (itemObjectData.amount > 1)
+    //        amount.text = itemObjectData.amount.ToString();
+    //    else
+    //        amount.text = "";
+    //}
 
     public Transform GetOnDragParent()
     {

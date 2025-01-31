@@ -13,13 +13,41 @@ public class Inventory : ScriptableObject
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i] == item)
+            if (item is CountableObject countableItemObject)
+            {
+                countableItemObject.amount--;
+                if (countableItemObject.amount < 0)
+                return true;
+            }
+            else if (item is UnCountableObject unCountableItem) 
             {
                 items.RemoveAt(i);
-                return true;
             }
         }
         return false;
     }
 
+
+    public void AddItem(ItemObject item)
+    {
+        if (item is CountableObject countableItemObject)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].itemType.GetInstanceID() == countableItemObject.itemType.GetInstanceID())
+                {
+                    CountableObject findItem = items[i] as CountableObject;
+                    findItem.amount++;
+                }
+                else
+                {
+                    items.Add(item);
+                }
+            }
+        }
+        else if (item is UnCountableObject unCountableItem)
+        {
+            items.Add(item);
+        }
+    }
 }

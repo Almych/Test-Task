@@ -15,14 +15,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (transform.childCount > 0)
         {
             ItemSlot currentItem = transform.GetChild(0).GetComponent<ItemSlot>();
-            if (currentItem.itemObjectData.item.GetInstanceID() == newItem.itemObjectData.item.GetInstanceID() && currentItem.itemObjectData.amount < currentItem.itemObjectData.item.maxStackAmount)
+            if (currentItem.itemObjectData.itemType.GetInstanceID() == newItem.itemObjectData.itemType.GetInstanceID()) //currentItem.itemObjectData.amount < currentItem.itemObjectData.item.maxStackAmount
             {
-                int availableSpace = currentItem.itemObjectData.item.maxStackAmount - currentItem.itemObjectData.amount;
-                int amountToAdd = Mathf.Min(newItem.itemObjectData.amount, availableSpace);
+                //int availableSpace = currentItem.itemObjectData.item.maxStackAmount - currentItem.itemObjectData.amount;
+                //int amountToAdd = Mathf.Min(newItem.itemObjectData.amount, availableSpace);
 
-                InventoryManager.Instance.IncreaseAmount(currentItem, amountToAdd);
+                //InventoryManager.Instance.IncreaseAmount(currentItem, amountToAdd);
 
-                InventoryManager.Instance.DecreaseAmount(newItem, amountToAdd);
+                //InventoryManager.Instance.DecreaseAmount(newItem, amountToAdd);
                 
             }
             

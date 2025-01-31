@@ -30,20 +30,20 @@ public class InventoryManager : MonoBehaviour
     
     public void DecreaseAmount(ItemSlot itemSlot, int decreaseAmount)
     {
-        if (itemSlot.itemObjectData.RemoveItem(decreaseAmount))
-        {
-            RemoveFromInventory(itemSlot);
-        }
-        itemSlot.UpdateSlot();
+        //if (itemSlot.itemObjectData.RemoveItem(decreaseAmount))
+        //{
+        //    RemoveFromInventory(itemSlot);
+        //}
+        //itemSlot.UpdateSlot();
     }
 
     public void IncreaseAmount(ItemSlot itemSlot, int increaseAmount)
     {
-        if (itemSlot.itemObjectData.amount + increaseAmount <= itemSlot.itemObjectData.item.maxStackAmount)
-        {
-            itemSlot.itemObjectData.AddItem(increaseAmount);
-            itemSlot.UpdateSlot();
-        }
+        //if (itemSlot.itemObjectData.amount + increaseAmount <= itemSlot.itemObjectData.item.maxStackAmount)
+        //{
+        //    itemSlot.itemObjectData.AddItem(increaseAmount);
+        //    itemSlot.UpdateSlot();
+        //}
     }
 
     public void RemoveFromInventory(ItemSlot itemSlot)
@@ -73,28 +73,28 @@ public class InventoryManager : MonoBehaviour
     private int GetBulletsForType(BulletsType bulletType)
     {
         int amount = 0;
-        for (int i = 0; i < itemsSlots.Count; i++)
-        {
-            if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
-            {
-                amount += itemsSlots[i].itemObjectData.amount;
-            }
-        }
+        //for (int i = 0; i < itemsSlots.Count; i++)
+        //{
+        //    if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
+        //    {
+        //        amount += itemsSlots[i].itemObjectData.amount;
+        //    }
+        //}
         return amount;
     }
 
     private void DecreaseBullets(BulletsType bulletType, int amount)
     {
-        for (int i = 0; i < itemsSlots.Count; i++)
-        {
-            if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
-            {
-                int decreaseAmount = Mathf.Min(amount, itemsSlots[i].itemObjectData.amount);
-                DecreaseAmount(itemsSlots[i], decreaseAmount);
-                amount -= decreaseAmount;
+        //for (int i = 0; i < itemsSlots.Count; i++)
+        //{
+        //    if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
+        //    {
+        //        int decreaseAmount = Mathf.Min(amount, itemsSlots[i].itemObjectData.amount);
+        //        DecreaseAmount(itemsSlots[i], decreaseAmount);
+        //        amount -= decreaseAmount;
 
-                if (amount <= 0) break;
-            }
-        }
+        //        if (amount <= 0) break;
+        //    }
+        //}
     }
 }

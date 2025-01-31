@@ -1,6 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Aim", menuName = "ItemObjects/Aim")]
-public class Aim : ItemType
+[CreateAssetMenu(fileName = "New Aim", menuName = "ItemOb/Aim")]
+public class Aim : Countable
 {
     public float healPoints;
 }

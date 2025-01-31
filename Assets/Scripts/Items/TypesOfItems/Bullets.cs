@@ -5,8 +5,7 @@ public enum BulletsType {
 };
 
 [CreateAssetMenu(fileName = "New Bullets", menuName = "ItemObjects/Bullets")]
-public class Bullets : ItemType
+public class Bullets : Countable
 {
-    public float bulletDamage;
     public BulletsType bulletsType;
 }

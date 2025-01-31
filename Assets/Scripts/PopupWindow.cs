@@ -16,14 +16,14 @@ public class PopupWindow : MonoBehaviour
 
     public void ShowWindow(ItemSlot itemSlot)
     {
-        imageOfItem.sprite = itemSlot.itemObjectData.item.itemSprite;
-        weightCount.text = itemSlot.itemObjectData.item.itemWeight.ToString() + " кг";
-        nameOfItem.text = itemSlot.itemObjectData.item.name;
+        imageOfItem.sprite = itemSlot.itemObjectData.itemType.itemSprite;
+        weightCount.text = itemSlot.itemObjectData.itemType.itemWeight.ToString() + " кг";
+        nameOfItem.text = itemSlot.itemObjectData.itemType.name;
         deleteButton.onClick.AddListener(() => InventoryManager.Instance.RemoveFromInventory(itemSlot));
         TMP_Text useButtonText = useButton.transform.GetChild(0).GetComponent<TMP_Text>();
         if (useButtonText != null)
         {
-            ItemType itemType = itemSlot.itemObjectData.item;
+            ItemType itemType = itemSlot.itemObjectData.itemType;
             if (itemType is Bullets)
             {
                 useButtonText.text = "Купить";

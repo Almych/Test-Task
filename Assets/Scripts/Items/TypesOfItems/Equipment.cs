@@ -7,7 +7,7 @@ public enum EquipmentType
 };
 
 [CreateAssetMenu(fileName ="New Equipment", menuName = "ItemObjects/Equipment")]
-public class Equipment : ItemType
+public class Equipment : UnCountable
 {
     public int defendPoints;
     public EquipmentType type;
