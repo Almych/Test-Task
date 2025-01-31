@@ -11,9 +11,4 @@ public class Equipment : ItemType
 {
     public int defendPoints;
     public EquipmentType type;
-
-    public override void OnUse()
-    {
-        throw new System.NotImplementedException();
-    }
 }

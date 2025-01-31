@@ -6,6 +6,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
 {
     public EquipmentType equipmentType;
     public TMP_Text defenseText;
+    private int defensePoint;
     private ItemSlot currentItem;
     public void OnDrop(PointerEventData eventData)
     {
@@ -25,8 +26,8 @@ public class EquipSlot : MonoBehaviour, IDropHandler
                 currentItem.transform.position = equipmentSlot.GetOnDragParent().position;
                 currentItem.transform.SetParent(equipmentSlot.GetOnDragParent());
                 currentItem.SetParentAfterDrag(equipmentSlot.GetOnDragParent());
-                Debug.Log(currentItem.transform.parent.name);
             }
+            defensePoint = equipment.defendPoints;
             equipmentSlot.SetParentAfterDrag(transform);
             equipmentSlot.transform.SetParent(transform);
             equipmentSlot.transform.SetAsFirstSibling();
@@ -35,7 +36,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
         }
     }
 
-   
+
 
     public void UpdateDefenseText()
     {
@@ -44,6 +45,11 @@ public class EquipSlot : MonoBehaviour, IDropHandler
         {
             defenseText.text = "0";
         }
+    }
+
+    public int GetDefensePoints()
+    {
+        return defensePoint;
     }
 }
 

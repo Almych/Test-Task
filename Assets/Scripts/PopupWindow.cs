@@ -19,7 +19,6 @@ public class PopupWindow : MonoBehaviour
         imageOfItem.sprite = itemSlot.itemObjectData.item.itemSprite;
         weightCount.text = itemSlot.itemObjectData.item.itemWeight.ToString() + " êã";
         nameOfItem.text = itemSlot.itemObjectData.item.name;
-        useButton.onClick.AddListener(itemSlot.itemObjectData.item.OnUse);
         deleteButton.onClick.AddListener(() => InventoryManager.Instance.RemoveFromInventory(itemSlot));
         TMP_Text useButtonText = useButton.transform.GetChild(0).GetComponent<TMP_Text>();
         if (useButtonText != null)

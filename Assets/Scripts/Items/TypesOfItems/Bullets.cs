@@ -9,9 +9,4 @@ public class Bullets : ItemType
 {
     public float bulletDamage;
     public BulletsType bulletsType;
-
-    public override void OnUse()
-    {
-        throw new System.NotImplementedException();
-    }
 }

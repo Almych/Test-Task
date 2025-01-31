@@ -3,9 +3,4 @@ using UnityEngine;
 public class Aim : ItemType
 {
     public float healPoints;
-
-    public override void OnUse()
-    {
-        throw new System.NotImplementedException();
-    }
 }
