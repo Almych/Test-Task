@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class InventoryManager : MonoBehaviour
         for (int j = 0; j < inventorySlots.Count && j < inventory.items.Count; j++)
         {
             ItemSlot slot = inventorySlotCreator.CreateItemSlot(inventory.items[j]);
+            slot.UpdateSlot();
             itemsSlots.Add(slot);
             inventorySlots[j].AddItem(slot);
         }
@@ -30,27 +30,26 @@ public class InventoryManager : MonoBehaviour
     
     public void DecreaseAmount(ItemSlot itemSlot, int decreaseAmount)
     {
-        //if (itemSlot.itemObjectData.RemoveItem(decreaseAmount))
-        //{
-        //    RemoveFromInventory(itemSlot);
-        //}
-        //itemSlot.UpdateSlot();
+        if (inventory.DecreaseItem(itemSlot))
+            Destroy(itemSlot.gameObject);
+            itemSlot.UpdateSlot();
+    }
+
+    public void RemoveFromInventory(ItemSlot slot)
+    {
+        inventory.RemoveFromInventory(slot);
     }
 
     public void IncreaseAmount(ItemSlot itemSlot, int increaseAmount)
     {
-        //if (itemSlot.itemObjectData.amount + increaseAmount <= itemSlot.itemObjectData.item.maxStackAmount)
-        //{
-        //    itemSlot.itemObjectData.AddItem(increaseAmount);
-        //    itemSlot.UpdateSlot();
-        //}
+        if (itemSlot.itemObject.itemType is Countable countable && itemSlot.itemObject.amount + increaseAmount <= countable.maxStackAmount)
+        {
+            inventory.AddItem(itemSlot.itemObject);
+            itemSlot.UpdateSlot();
+        }
     }
 
-    public void RemoveFromInventory(ItemSlot itemSlot)
-    {
-        if(inventory.RemoveItem(itemSlot.itemObjectData))
-        Destroy(itemSlot.gameObject);
-    }
+   
     public void ShowWindow(ItemSlot slot)
     {
         popupWindow.gameObject.SetActive(true);
@@ -73,28 +72,28 @@ public class InventoryManager : MonoBehaviour
     private int GetBulletsForType(BulletsType bulletType)
     {
         int amount = 0;
-        //for (int i = 0; i < itemsSlots.Count; i++)
-        //{
-        //    if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
-        //    {
-        //        amount += itemsSlots[i].itemObjectData.amount;
-        //    }
-        //}
+        for (int i = 0; i < itemsSlots.Count; i++)
+        {
+            if (itemsSlots[i].itemObject.itemType is Bullets bullet && bullet.bulletsType == bulletType)
+            {
+                amount += itemsSlots[i].itemObject.amount;
+            }
+        }
         return amount;
     }
 
     private void DecreaseBullets(BulletsType bulletType, int amount)
     {
-        //for (int i = 0; i < itemsSlots.Count; i++)
-        //{
-        //    if (itemsSlots[i].itemObjectData.item is Bullets bullet && bullet.bulletsType == bulletType)
-        //    {
-        //        int decreaseAmount = Mathf.Min(amount, itemsSlots[i].itemObjectData.amount);
-        //        DecreaseAmount(itemsSlots[i], decreaseAmount);
-        //        amount -= decreaseAmount;
+        for (int i = 0; i < itemsSlots.Count; i++)
+        {
+            if (itemsSlots[i].itemObject.itemType is Bullets bullet && bullet.bulletsType == bulletType)
+            {
+                int decreaseAmount = Mathf.Min(amount, itemsSlots[i].itemObject.amount);
+                DecreaseAmount(itemsSlots[i], decreaseAmount);
+                amount -= decreaseAmount;
 
-        //        if (amount <= 0) break;
-        //    }
-        //}
+                if (amount <= 0) break;
+            }
+        }
     }
 }

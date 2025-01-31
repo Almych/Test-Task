@@ -19,7 +19,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
     {
         if(transform.childCount > 0)
         currentItem = transform.GetChild(0).GetComponent<ItemSlot>();
-        if (equipmentSlot.itemObjectData.itemType is Equipment equipment && equipment.type == equipmentType)
+        if (equipmentSlot.itemObject.itemType is Equipment equipment && equipment.type == equipmentType)
         {
             if(currentItem != null)
             {
@@ -40,7 +40,7 @@ public class EquipSlot : MonoBehaviour, IDropHandler
 
     public void UpdateDefenseText()
     {
-        var equipment = currentItem.itemObjectData.itemType as Equipment;
+        var equipment = currentItem.itemObject.itemType as Equipment;
         if (equipment != null)
         {
             defenseText.text = "0";

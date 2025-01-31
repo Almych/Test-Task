@@ -1,7 +1,6 @@
 
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -9,35 +8,46 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<ItemObject> items = new List<ItemObject>();
-    public bool RemoveItem(ItemObject item)
+    public bool DecreaseItem(ItemSlot item)
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (item is CountableObject countableItemObject)
+            if (items[i].itemType.GetInstanceID() == item.itemObject.itemType.GetInstanceID())
             {
-                countableItemObject.amount--;
-                if (countableItemObject.amount < 0)
-                return true;
-            }
-            else if (item is UnCountableObject unCountableItem) 
-            {
-                items.RemoveAt(i);
+                if (item.itemObject.itemType is Countable)
+                {
+                    items[i].amount--;
+                    if (items[i].amount <= 0)
+                        items.RemoveAt(i);
+                    return true;
+                }
+                else if (item.itemObject.itemType is UnCountable)
+                {
+                    items.RemoveAt(i);
+                    return true;
+                }
             }
         }
         return false;
     }
 
+    public void RemoveFromInventory(ItemSlot slot)
+    {
+        if (items.Contains(slot.itemObject))
+        {
+            items.Remove(slot.itemObject);
+        }
+    }
 
     public void AddItem(ItemObject item)
     {
-        if (item is CountableObject countableItemObject)
+        if (item.itemType is Countable)
         {
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].itemType.GetInstanceID() == countableItemObject.itemType.GetInstanceID())
+                if (items[i].itemType.GetInstanceID() == item.itemType.GetInstanceID())
                 {
-                    CountableObject findItem = items[i] as CountableObject;
-                    findItem.amount++;
+                    items[i].amount++;
                 }
                 else
                 {
@@ -45,7 +55,7 @@ public class Inventory : ScriptableObject
                 }
             }
         }
-        else if (item is UnCountableObject unCountableItem)
+        else if (item.itemType is UnCountable)
         {
             items.Add(item);
         }
