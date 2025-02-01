@@ -6,7 +6,9 @@ public class AimSlot : ItemSlot
     
     public override void OnUse()
     {
-
+        Aim aim = itemObject.itemType as Aim;
+        Player.Instance.healthBar.ChangeHealthValue(aim.healPoints);
+        InventoryManager.Instance.DecreaseAmount(this, 1);
     }
 
     public override void SetParentAfterDrag(Transform parent)

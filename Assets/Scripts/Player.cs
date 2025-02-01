@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHandler
 {
+    public static Player Instance;
     [SerializeField] private HealthData health;
     [SerializeField] private HealthBarUi healthUi;
     [SerializeField] private EquipSlot headSlot, bodySlot;
-    private HealthBar healthBar;
+    public HealthBar healthBar { get; private set; }
     private WeaponManager weaponManager => GetComponent<WeaponManager>();
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
        healthBar = new HealthBar(health);
     }
     private void Start()
     {
+        if(healthBar.CurrentHealth <= 0)
         healthBar.RestoreHealth();
+        else healthBar.UpdatehealthBar();
     }
 
     private void OnEnable()

@@ -30,23 +30,23 @@ public class InventoryManager : MonoBehaviour
     
     public void DecreaseAmount(ItemSlot itemSlot, int decreaseAmount)
     {
-        if (inventory.DecreaseItem(itemSlot))
-            Destroy(itemSlot.gameObject);
+        if (inventory.DecreaseItem(itemSlot.itemObject))
+            RemoveFromInventory(itemSlot);
+
             itemSlot.UpdateSlot();
     }
 
     public void RemoveFromInventory(ItemSlot slot)
     {
-        inventory.RemoveFromInventory(slot);
+        
+        if(inventory.RemoveFromInventory(slot))
+        Destroy(slot.gameObject);
     }
 
     public void IncreaseAmount(ItemSlot itemSlot, int increaseAmount)
     {
-        if (itemSlot.itemObject.itemType is Countable countable && itemSlot.itemObject.amount + increaseAmount <= countable.maxStackAmount)
-        {
-            inventory.AddItem(itemSlot.itemObject);
+            inventory.IncreaseItem(itemSlot.itemObject, increaseAmount);
             itemSlot.UpdateSlot();
-        }
     }
 
    

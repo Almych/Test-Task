@@ -13,7 +13,7 @@ public class HealthBar
         private set
         {
             healthData.currentHealth = Mathf.Clamp(value, 0f, healthData.maxHealth);
-            OnHealthValueChanged?.Invoke(healthData.currentHealth, healthData.maxHealth);
+           UpdatehealthBar();
         }
     }
 
@@ -36,6 +36,10 @@ public class HealthBar
         }
     }
 
+    public void UpdatehealthBar()
+    {
+        OnHealthValueChanged?.Invoke(healthData.currentHealth, healthData.maxHealth);
+    }
    
 
 }

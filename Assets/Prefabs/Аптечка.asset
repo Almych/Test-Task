@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 8937198426451681689, guid: a715e36bd6f0a6246bb096309b49424c, type: 3}
   itemWeight: 1
-  currentAmount: 4
   maxStackAmount: 6
-  healPoints: 50
+  healPoints: 30

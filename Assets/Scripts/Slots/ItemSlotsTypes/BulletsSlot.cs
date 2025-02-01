@@ -5,7 +5,7 @@ public class BulletsSlot : ItemSlot
 {
     public override void OnUse()
     {
-       
+        InventoryManager.Instance.IncreaseAmount(this, 1);
     }
 
     public override void SetParentAfterDrag(Transform parent)

@@ -8,20 +8,22 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<ItemObject> items = new List<ItemObject>();
-    public bool DecreaseItem(ItemSlot item)
+    public bool DecreaseItem(ItemObject item)
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].itemType.GetInstanceID() == item.itemObject.itemType.GetInstanceID())
+            if (items[i].itemType == item.itemType) 
             {
-                if (item.itemObject.itemType is Countable)
+                if (item.itemType is Countable)
                 {
                     items[i].amount--;
                     if (items[i].amount <= 0)
+                    {
                         items.RemoveAt(i);
-                    return true;
+                        return true;
+                    }
                 }
-                else if (item.itemObject.itemType is UnCountable)
+                else if (item.itemType is UnCountable)
                 {
                     items.RemoveAt(i);
                     return true;
@@ -31,33 +33,50 @@ public class Inventory : ScriptableObject
         return false;
     }
 
-    public void RemoveFromInventory(ItemSlot slot)
+
+    public bool RemoveFromInventory(ItemSlot slot)
     {
         if (items.Contains(slot.itemObject))
         {
             items.Remove(slot.itemObject);
+            return true;
         }
+        return false;
     }
 
-    public void AddItem(ItemObject item)
+    public void IncreaseItem(ItemObject item, int increaseAmount)
     {
-        if (item.itemType is Countable)
+        if (item.itemType is Countable countable)
         {
+           
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].itemType.GetInstanceID() == item.itemType.GetInstanceID())
+                if (items[i] == item)
                 {
-                    items[i].amount++;
+                    if (items[i].amount + increaseAmount <= countable.maxStackAmount)
+                    {
+                        items[i].amount += increaseAmount;
+                        return;  
+                    }
                 }
                 else
                 {
-                    items.Add(item);
+                    Debug.Log("no found");
                 }
             }
         }
-        else if (item.itemType is UnCountable)
+        else
         {
-            items.Add(item);
+
+            AddItem(item);
         }
+    }
+
+
+
+
+    public void AddItem(ItemObject itemObject)
+    {
+        items.Add(itemObject);
     }
 }
