@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: -4281591449247144313, guid: 7a2156ede15da1f45ac89d2443646f82, type: 3}
   itemWeight: 5
-  maxStackAmount: 1
+  itemName: "\u0428\u043B\u0435\u043C"
+  maxStackSize: 1
+  isStackable: 0
   defendPoints: 7
   type: 0

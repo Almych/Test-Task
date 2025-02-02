@@ -2,26 +2,25 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    [SerializeField] private Weapon lightGun, heavyGun;
     private Weapon currentWeapon;
-
-   
-
-    private void Start()
-    {
-        lightGun.onClickButton.onClick.AddListener(()=>ChangeWeapon(lightGun));
-        heavyGun.onClickButton.onClick.AddListener(() => ChangeWeapon(heavyGun));
-    }
+    
 
     public void ChangeWeapon(Weapon newWeapon)
     {
         if (currentWeapon != null)
         {
             if(newWeapon != currentWeapon)
-            currentWeapon.DeActivate();
+            {
+                currentWeapon.DeActivate();
+                currentWeapon = newWeapon;
+                currentWeapon.Activate();
+            }
         }
-        currentWeapon = newWeapon;
-        currentWeapon.Activate();
+        else
+        {
+            currentWeapon = newWeapon;
+            currentWeapon.Activate();
+        }
     }
 
     public float Shoot()
@@ -32,13 +31,16 @@ public class WeaponManager : MonoBehaviour
 
             if (InventoryManager.Instance.UseBullets(currentWeapon.bulletsType, requiredBullets))
             {
-                Debug.Log("Выстрел с оружия: " + currentWeapon.name);
-                return currentWeapon.GetShoot(requiredBullets);
+                return currentWeapon.GetDamage();
             }
             else
             {
-                Debug.Log("Недостаточно патронов!");
+                Debug.Log("There is no ammos!");
             }
+        }
+        else
+        {
+            Debug.Log("Choose weapon to shoot!");
         }
         return 0;
     }

@@ -1,24 +1,23 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHandler
+public class Player : Character
 {
     public static Player Instance;
     [SerializeField] private HealthData health;
     [SerializeField] private HealthBarUi healthUi;
     [SerializeField] private EquipSlot headSlot, bodySlot;
-    public HealthBar healthBar { get; private set; }
+    private HealthBar healthBar;
     private WeaponManager weaponManager => GetComponent<WeaponManager>();
     void Awake()
     {
         if (Instance == null)
             Instance = this;
-       healthBar = new HealthBar(health);
+        healthBar = new HealthBar(health);
     }
-    private void Start()
+
+    public override void Init()
     {
-        if(healthBar.CurrentHealth <= 0)
-        healthBar.RestoreHealth();
-        else healthBar.UpdatehealthBar();
+        healthBar.RestoreOrUpdate();
     }
 
     private void OnEnable()
@@ -33,18 +32,23 @@ public class Player : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHa
         healthBar.OnDeath -= Death;
     }
 
+    public void Heal(float healPoints)
+    {
+        healthBar.ChangeHealthValue(healPoints);
+    }
 
-    public DamageWay Attack()
+    public override DamageWay Attack()
     {
         return new DamageWay(EquipmentType.Head, weaponManager.Shoot());
     }
 
-    public void Death()
+
+    public override void Death()
     {
         GameManager.Instance.ShowGameOverWindow();
     }
 
-    public void GetDamage(DamageWay damageWay)
+    public override void GetDamage(DamageWay damageWay)
     {
         if (Defense(damageWay) >= 0)
         {
@@ -65,6 +69,18 @@ public class Player : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHa
         else
         {
             return bodySlot.GetDefensePoints() - damageWay.damage;
+        }
+    }
+
+    public void PutOnArmor(EquipmentSlot slot, EquipmentType equipmentType)
+    {
+        if (equipmentType == EquipmentType.Body)
+        {
+            bodySlot.Equip(slot);
+        }
+        else
+        {
+            headSlot.Equip(slot);
         }
     }
 }

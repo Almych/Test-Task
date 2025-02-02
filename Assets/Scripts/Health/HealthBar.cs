@@ -13,7 +13,7 @@ public class HealthBar
         private set
         {
             healthData.currentHealth = Mathf.Clamp(value, 0f, healthData.maxHealth);
-           UpdatehealthBar();
+           UpdateHealthBar();
         }
     }
 
@@ -22,9 +22,12 @@ public class HealthBar
         this.healthData = healthData;
     }
 
-    public void RestoreHealth()
+    public void RestoreOrUpdate()
     {
-       ChangeHealthValue(healthData.maxHealth);
+        if (healthData.currentHealth <= 0f)
+            ChangeHealthValue(healthData.maxHealth);
+        else
+            UpdateHealthBar();
     }
 
     public void ChangeHealthValue(float value)
@@ -36,7 +39,7 @@ public class HealthBar
         }
     }
 
-    public void UpdatehealthBar()
+    private void UpdateHealthBar()
     {
         OnHealthValueChanged?.Invoke(healthData.currentHealth, healthData.maxHealth);
     }

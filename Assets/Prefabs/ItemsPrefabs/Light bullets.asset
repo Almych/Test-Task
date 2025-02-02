@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02e2e5da43795984093a5a15f5efd216, type: 3}
-  m_Name: "9\u044518\u043C\u043C"
+  m_Name: Light bullets
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 8429838930962672440, guid: 6fdff4a628474fc48ac2d05f7e337ff6, type: 3}
   itemWeight: 0.03
-  maxStackAmount: 34
+  itemName: "9\u044518\u043C\u043C"
+  maxStackSize: 50
+  isStackable: 1
   bulletsType: 1

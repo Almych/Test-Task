@@ -5,4 +5,5 @@ public class ItemsIcons : ScriptableObject
     public Sprite healIcon;
     public Sprite bulletIcon;
     public Sprite defenseIcon;
+    public Sprite weightIcon;
 }

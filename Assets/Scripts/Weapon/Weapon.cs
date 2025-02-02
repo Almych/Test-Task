@@ -8,9 +8,8 @@ public class Weapon : MonoBehaviour
     public int useBulletsPerAttack;
     public Button onClickButton => GetComponent<Button>();
     private Outline outline => GetComponent<Outline>();
-    public float GetShoot(int amountOfBullets)
+    public float GetDamage()
     {
-        amountOfBullets -= useBulletsPerAttack;
         return damage;
     }
 

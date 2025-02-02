@@ -5,10 +5,10 @@ public class ItemSlotCreator : MonoBehaviour
 {
     [SerializeField] private GameObject itemSlotPrefab;
     private ItemSlot slot;
-    public ItemSlot CreateItemSlot(ItemObject item)
+    public ItemSlot CreateItemSlot(InventoryItem inventoryItem)
     {
        
-        switch(item.itemType)
+        switch(inventoryItem.item)
         {
             case Equipment:
                 slot = Instantiate(itemSlotPrefab).AddComponent<EquipmentSlot>();
@@ -24,7 +24,7 @@ public class ItemSlotCreator : MonoBehaviour
 
         }
         if (slot != null)
-        slot.Init(item);
+        slot.Init(inventoryItem);
         return slot;
     }
 }

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c84d0098a7ecbd4d8398f39c77f7806, type: 3}
-  m_Name: "\u041A\u0443\u0440\u0442\u043A\u0430"
+  m_Name: Winter hat
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 561441902470860393, guid: 8ff42b1f9e60f2b429f48c62f328fca1, type: 3}
+  itemSprite: {fileID: 6917701551809326381, guid: 9478c32b32a906446b6499d83fcae64a, type: 3}
   itemWeight: 1
-  currentAmount: 1
-  maxStackAmount: 1
+  itemName: "\u0428\u0430\u043F\u043A\u0430"
+  maxStackSize: 1
+  isStackable: 0
   defendPoints: 3
-  type: 1
+  type: 0

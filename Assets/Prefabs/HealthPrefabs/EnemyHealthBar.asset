@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c84d0098a7ecbd4d8398f39c77f7806, type: 3}
-  m_Name: "\u0411\u0440\u043E\u043D\u0438\u043A"
+  m_Script: {fileID: 11500000, guid: 42a34f5c0d2c02b4e97b2f362bf957f7, type: 3}
+  m_Name: EnemyHealthBar
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -6919659749740646257, guid: 6795a2aaf0d159d45b1088f3f57022a8, type: 3}
-  itemWeight: 2
-  maxStackAmount: 1
-  defendPoints: 7
-  type: 1
+  maxHealth: 100
+  currentHealth: 85

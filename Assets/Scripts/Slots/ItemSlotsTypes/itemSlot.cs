@@ -6,18 +6,17 @@ using UnityEngine.UI;
 
 
 
-public abstract class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
+public abstract class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler 
 {
-    public ItemObject itemObject { get; private set; }
+    public InventoryItem inventoryData { get; private set; }
     protected Transform onDragParent;
     protected Image image => GetComponent<Image>();
     protected TMP_Text amount => transform.GetChild(0).GetComponent<TMP_Text>();
 
-
-    public void Init(ItemObject item)
+    public virtual void Init(InventoryItem inventoryItem)
     {
-        itemObject = item;
-        image.sprite = item.itemType.itemSprite;
+        inventoryData = inventoryItem;
+        image.sprite = inventoryItem.item.itemSprite;
     }
 
    
@@ -58,8 +57,8 @@ public abstract class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler,
 
     public void UpdateSlot()
     {
-        if (itemObject.amount > 1)
-            amount.text = itemObject.amount.ToString();
+        if (inventoryData.amount > 1)
+            amount.text = inventoryData.amount.ToString();
         else
             amount.text = "";
     }

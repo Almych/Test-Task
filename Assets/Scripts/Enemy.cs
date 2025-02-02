@@ -1,18 +1,28 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHandler
+public class Enemy : Character
 {
+    public static Enemy Instance;
     [SerializeField] private HealthBarUi healthUi;
     [SerializeField] private HealthData health;
     [SerializeField] private float damage;
     private DamageWay previousDamage;
     private HealthBar healthBar;
-    private void Start()
+
+    private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
         healthBar = new HealthBar(health);
     }
+    public override void Init()
+    {
+        healthBar.RestoreOrUpdate();
+    }
 
-    public DamageWay Attack()
+    public override DamageWay Attack()
     {
         if (previousDamage == null || previousDamage.hitWay == EquipmentType.Body)
         {
@@ -29,9 +39,10 @@ public class Enemy : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHan
        
     }
 
-    public void Death()
+    public override void Death()
     {
-       
+        InventoryManager.Instance.GetRandomLootItem();
+       //can hide enemy if dead
     }
 
     private void OnEnable()
@@ -47,7 +58,7 @@ public class Enemy : MonoBehaviour, IAttackHandler, IDeathHandler, IGetDamageHan
     }
 
 
-    public void GetDamage(DamageWay damageWay)
+    public override void GetDamage(DamageWay damageWay)
     {
         healthBar.ChangeHealthValue(-damageWay.damage);
     }

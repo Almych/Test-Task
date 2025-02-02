@@ -3,12 +3,16 @@ using UnityEngine.EventSystems;
 
 public class AimSlot : ItemSlot
 {
-    
+    public override void Init(InventoryItem inventoryItem)
+    {
+        base.Init(inventoryItem);
+    }
     public override void OnUse()
     {
-        Aim aim = itemObject.itemType as Aim;
-        Player.Instance.healthBar.ChangeHealthValue(aim.healPoints);
-        InventoryManager.Instance.DecreaseAmount(this, 1);
+        Aim aim = inventoryData.item as Aim;
+        Player.Instance.Heal(aim.healPoints);
+        InventoryManager.Instance.DeIncreaseItem(this, 1);
+        UpdateSlot();
     }
 
     public override void SetParentAfterDrag(Transform parent)

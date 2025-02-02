@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bfec4eb83e6b244b09ea7c1d40a95b, type: 3}
   m_Name: PopupIcons'
   m_EditorClassIdentifier: 
-  healIcon: {fileID: 8937198426451681689, guid: a715e36bd6f0a6246bb096309b49424c, type: 3}
-  bulletIcon: {fileID: 536054399269926812, guid: 90e088a530f001440ab09046722aae6c, type: 3}
-  defenseIcon: {fileID: 2060655446117844436, guid: 02948adb1a1db6243951be783cfdacf3, type: 3}
+  healIcon: {fileID: 21300000, guid: a4cd08585fd76734dae5a0441533cf8b, type: 3}
+  bulletIcon: {fileID: 21300000, guid: c161a00901b8af34097ebad716389c35, type: 3}
+  defenseIcon: {fileID: 7072076591972620236, guid: 490088a045bc85644a76153321627720, type: 3}
+  weightIcon: {fileID: 21300000, guid: 2596abc050c95964fbd8b3d12fccea74, type: 3}

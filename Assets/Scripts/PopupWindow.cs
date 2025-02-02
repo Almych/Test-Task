@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,18 +14,22 @@ public class PopupWindow : MonoBehaviour
     public ItemsIcons icons;
     public Button useButton, deleteButton;
 
-
     public void ShowWindow(ItemSlot itemSlot)
     {
-        imageOfItem.sprite = itemSlot.itemObject.itemType.itemSprite;
-        weightCount.text = itemSlot.itemObject.itemType.itemWeight.ToString() + " кг";
-        nameOfItem.text = itemSlot.itemObject.itemType.name;
+       
+        useButton.onClick.RemoveAllListeners();
+        deleteButton.onClick.RemoveAllListeners();
+
+        imageOfItem.sprite = itemSlot.inventoryData.item.itemSprite;
+        weightCount.text = itemSlot.inventoryData.item.itemWeight.ToString() + " кг";
+        nameOfItem.text = itemSlot.inventoryData.item.itemName;
         useButton.onClick.AddListener(itemSlot.OnUse);
         deleteButton.onClick.AddListener(() => InventoryManager.Instance.RemoveFromInventory(itemSlot));
+
         TMP_Text useButtonText = useButton.transform.GetChild(0).GetComponent<TMP_Text>();
         if (useButtonText != null)
         {
-            ItemType itemType = itemSlot.itemObject.itemType;
+            Item itemType = itemSlot.inventoryData.item;
             if (itemType is Bullets)
             {
                 useButtonText.text = "Купить";
@@ -42,6 +47,5 @@ public class PopupWindow : MonoBehaviour
             }
         }
     }
-
     
 }

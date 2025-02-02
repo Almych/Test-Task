@@ -1,82 +1,71 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class ItemObject
+{
+    public int amount;
+    public Item item;
+}
 
 [CreateAssetMenu(fileName = "New inventory", menuName = "Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<ItemObject> items = new List<ItemObject>();
-    public bool DecreaseItem(ItemObject item)
+    public List<InventoryItem> inventoryItems = new List<InventoryItem>();
+
+
+    public void IncreaseAmount(InventoryItem inventoryItem, int quantity)
     {
-        for (int i = 0; i < items.Count; i++)
+        if (inventoryItem.item.isStackable)
         {
-            if (items[i].itemType == item.itemType) 
+            if (inventoryItem.amount + quantity <= inventoryItem.item.maxStackSize)
             {
-                if (item.itemType is Countable)
-                {
-                    items[i].amount--;
-                    if (items[i].amount <= 0)
-                    {
-                        items.RemoveAt(i);
-                        return true;
-                    }
-                }
-                else if (item.itemType is UnCountable)
-                {
-                    items.RemoveAt(i);
-                    return true;
-                }
+                inventoryItem.amount += quantity;
             }
         }
-        return false;
     }
 
-
-    public bool RemoveFromInventory(ItemSlot slot)
+    public bool DeIncreaseAmount(InventoryItem inventoryItem, int quantity)
     {
-        if (items.Contains(slot.itemObject))
+        if (inventoryItem.item.isStackable)
         {
-            items.Remove(slot.itemObject);
+           
+            inventoryItem.amount -= quantity;
+            if (inventoryItem.amount <= 0)
+            {
+                inventoryItems.Remove(inventoryItem);
+                return true;
+            }
+        }
+        else
+        {
+            inventoryItems.Remove(inventoryItem);
             return true;
         }
         return false;
     }
 
-    public void IncreaseItem(ItemObject item, int increaseAmount)
+    public bool RemoveFromInventory(InventoryItem item)
     {
-        if (item.itemType is Countable countable)
+        InventoryItem findItem = FindInventorySlot(item);
+        if (findItem != null)
         {
-           
-            for (int i = 0; i < items.Count; i++)
-            {
-                if (items[i] == item)
-                {
-                    if (items[i].amount + increaseAmount <= countable.maxStackAmount)
-                    {
-                        items[i].amount += increaseAmount;
-                        return;  
-                    }
-                }
-                else
-                {
-                    Debug.Log("no found");
-                }
-            }
+            inventoryItems.Remove(findItem);
+            return true;
         }
-        else
-        {
-
-            AddItem(item);
-        }
+        return false; 
     }
 
-
-
-
-    public void AddItem(ItemObject itemObject)
+    public InventoryItem FindInventorySlot(InventoryItem item)
     {
-        items.Add(itemObject);
+        for (int i = 0; i < inventoryItems.Count; i++)
+        {
+            if (inventoryItems[i] == item)
+            {
+                return inventoryItems[i];
+            }
+        }
+        return null;
     }
 }
