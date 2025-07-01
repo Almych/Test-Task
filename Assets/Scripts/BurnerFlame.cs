@@ -9,10 +9,6 @@ public class BurnerFlame : MonoBehaviour
     private bool isLit = false;
     private bool isGasFlowing = false;
 
-    void Start()
-    {
-        PerformEffect();
-    }
     public void SetGasFlowing(bool flowing)
     {
         isGasFlowing = flowing;
@@ -39,22 +35,6 @@ public class BurnerFlame : MonoBehaviour
 
         if (ignitionSound != null) ignitionSound.Play();
     }
-
-    private void PerformEffect()
-    {
-        activeFlame = ObjectPool.instance.GetObjectFromPool();
-        if (activeFlame != null)
-        {
-            activeFlame.transform.position = transform.position;
-            activeFlame.SetActive(true);
-
-            var ps = activeFlame.GetComponent<ParticleSystem>();
-            if (ps != null) ps.Play();
-        }
-
-        if (ignitionSound != null) ignitionSound.Play();
-    }
-
     public void Extinguish()
     {
         isLit = false;
