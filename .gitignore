@@ -1,0 +1,26 @@
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+obj/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.log
+.DS_Store
+*.apk
+*.aab
+.vscode/
+
+# Unity generated files
+MemoryCaptures/
+Logs/
+UserSettings/
