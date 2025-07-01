@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Repositories\\Test task BigDeamLab\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|C:\\Repositories\\Test task BigDeamLab\\assets\\scripts\\burnerflame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\burnerflame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|c:\\repositories\\test task bigdeamlab\\assets\\scripts\\matchigniter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\matchigniter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8404873-83A9-1553-94BD-4BAC5AFF162C}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|c:\\repositories\\test task bigdeamlab\\assets\\samples\\xr interaction toolkit\\3.1.2\\starter assets\\scripts\\gazeinputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8404873-83A9-1553-94BD-4BAC5AFF162C}|Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj|solutionrelative:assets\\samples\\xr interaction toolkit\\3.1.2\\starter assets\\scripts\\gazeinputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|C:\\Repositories\\Test task BigDeamLab\\assets\\scripts\\gasmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gasmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|C:\\Repositories\\Test task BigDeamLab\\assets\\scripts\\gasvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF14FE0F-7FD4-65CF-EAB2-FAA64B649894}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gasvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GazeInputManager.cs",
+              "DocumentMoniker": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Samples\\XR Interaction Toolkit\\3.1.2\\Starter Assets\\Scripts\\GazeInputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Samples\\XR Interaction Toolkit\\3.1.2\\Starter Assets\\Scripts\\GazeInputManager.cs",
+              "ToolTip": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Samples\\XR Interaction Toolkit\\3.1.2\\Starter Assets\\Scripts\\GazeInputManager.cs",
+              "RelativeToolTip": "Assets\\Samples\\XR Interaction Toolkit\\3.1.2\\Starter Assets\\Scripts\\GazeInputManager.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAhwDYAAADgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T10:57:51.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MatchIgniter.cs",
+              "DocumentMoniker": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\MatchIgniter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MatchIgniter.cs",
+              "ToolTip": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\MatchIgniter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MatchIgniter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T10:44:25.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BurnerFlame.cs",
+              "DocumentMoniker": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\BurnerFlame.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BurnerFlame.cs",
+              "ToolTip": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\BurnerFlame.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BurnerFlame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T08:28:19.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GasMasterController.cs",
+              "DocumentMoniker": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\GasMasterController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GasMasterController.cs",
+              "ToolTip": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\GasMasterController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GasMasterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T07:18:31.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GasValue.cs",
+              "DocumentMoniker": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\GasValue.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GasValue.cs",
+              "ToolTip": "C:\\Repositories\\Test task BigDeamLab\\Assets\\Scripts\\GasValue.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GasValue.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwDwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T06:46:13.747Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
